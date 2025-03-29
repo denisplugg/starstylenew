@@ -26,7 +26,6 @@ def add_foreign_outfit(outfit_item, price, item_img, celebrity_id):
         db.session.rollback()  
         print(f'Error adding foreign outfit: {str(e)}') 
 
-
 def add_cis_celebrity(celebrity_name, celebrity_img):
     new_cis_celebrity = CISCelebrities(celebrity_name=celebrity_name, celebrity_img=celebrity_img)
 
@@ -87,4 +86,4 @@ def add_star(name, description, image_url):
 
 if __name__ == '__main__':
     with app.app_context():
-        add_foreign_outfit()
+        add_foreign_outfit('RRR-123 Layered Double Pants',149990,'/static/img/Western_Stars/KeyGlock1/trousers.jpg',3)

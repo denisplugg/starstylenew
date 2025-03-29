@@ -1,74 +1,53 @@
 {% extends "base.html" %}
 
-{% block title %}Знаменитости | Star Style{% endblock %}
+{% block title %}
+Зарубежные знаменитости
+{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 {% endblock %}
 
 {% block content %}
+
+{% for celebrity in fcelebrities %}
 <div class="card-container">
   <div class="fashion-card">
-    <div class="card-content">
-      <!-- Фото знаменитости -->
-      <div class="celebrity-photo-section">
-        <div class="photo-placeholder" style="background-image: url('https://poizon.ru/storage/pro-img/origin-img/20230327/57db33f7dc594815b50849a8b1368794.jpg')"></div>
+      <div class="card-content">
+          <div class="celebrity-photo-section">
+              <div class="photo-placeholder" style="background-image: url('/static/{{ celebrity.celebrity_img }}')"></div>
+          </div>
+          
+          <div class="items-section">
+              <div class="items-row">
+                  {% for outfit in foutfits %}
+                  <div class="fashion-item">
+                      <div class="item-photo" style="background-image: url('{{ outfit.item_img }}')"></div>
+                      <div class="item-info">
+                          <h3 class="brand">{{ outfit.outfit_item.split()[0] }}</h3>
+                          <p class="item-name">{{ ' '.join(outfit.outfit_item.split()[1:]) }}</p>
+                          <div class="prices">
+                              <span class="current-price">{{ outfit.price }}р</span>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+          </div>
       </div>
       
-      <!-- Вещи с фото сверху -->
-      <div class="items-section">
-        <div class="items-row">
-          <!-- Вещь 1 -->
-          <div class="fashion-item">
-            <div class="item-photo" style="background-image: url('https://poizon.ru/storage/pro-img/origin-img/20230327/57db33f7dc594815b50849a8b1368794.jpg')"></div>
-            <div class="item-info">
-              <h3 class="brand">Givenchy</h3>
-              <p class="item-name">Dark Grey Square Ulla...</p>
-              <div class="prices">
-                <span class="current-price">$3300</span>
-              </div>
-            </div>
+      <div class="footer">
+          <span class="name">{{ celebrity.celebrity_name }}</span>
+          <button class="like-btn" onclick="this.classList.toggle('active')">
+              <i class="far fa-heart"></i>
+          </button>
+          <div class="total-price">
+              <span>Total:</span>
+              <span class="amount">{{ celebrity.outfits|sum(attribute='price') }}р</span>
           </div>
-          
-          <!-- Вещь 2 -->
-          <div class="fashion-item">
-            <div class="item-photo" style="background-image: url('https://source.unsplash.com/random/600x600/?fashion,hat')"></div>
-            <div class="item-info">
-              <h3 class="brand">Balenciaga</h3>
-              <p class="item-name">AVY18 primary helmet...</p>
-              <div class="prices">
-                <span class="current-price">$3300</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Вещь 3 -->
-          <div class="fashion-item">
-            <div class="item-photo" style="background-image: url('https://poizon.ru/storage/pro-img/origin-img/20230721/61c2ccd326aa4232b257115e05333732.jpg')"></div>
-            <div class="item-info">
-              <h3 class="brand">Nike</h3>
-              <p class="item-name">Air Force 1 'Triple White'</p>
-              <div class="prices">
-                <span class="current-price">$3300</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-    
-    <!-- Подвал -->
-    <div class="footer">
-      <span class="name">Rob49</span>
-      <button class="like-btn" onclick="this.classList.toggle('active')">
-        <i class="far fa-heart"></i>
-      </button>
-      <div class="total-price">
-        <span>Total:</span>
-        <span class="amount">$1618</span>
-      </div>
-    </div>
-  </div>
 </div>
+  {% endfor %}
+
 {% endblock %}

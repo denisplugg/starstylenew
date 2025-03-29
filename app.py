@@ -11,13 +11,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///databases.db'
 app.secret_key = 'fhggk90@#1041,v;gh432!?'
 db.init_app(app)
 
-
 with app.app_context():
     db.create_all()
 
 
 @app.route("/base")
-@app.route("/")
+@app.route("/", methods=['GET'])
 def index():
     fcelebrities = ForeignCelebrities.query.all()
     foutfits = ForeignOutfits.query.all()
@@ -27,30 +26,36 @@ def index():
     ruoutfits = RuOutfits.query.all()
     return render_template("index.html", fcelebrities=fcelebrities, foutfits=foutfits, ciscelebrities=ciscelebrities, cisoutfits=cisoutfits, rubrands=rubrands, ruoutfits=ruoutfits)
 
-@app.route("/WesternStars")
+@app.route("/WesternStars", methods=['GET'])
 def Western_Stars():
-    return render_template("Western_Stars.html")
+    fcelebrities = ForeignCelebrities.query.all()
+    foutfits = ForeignOutfits.query.all()
+    return render_template("Western_Stars.html",fcelebrities=fcelebrities, foutfits=foutfits)
 
-@app.route("/RuStreetwear")
+@app.route("/RuStreetwear", methods=['GET'])
 def Ru_Streetwear():
-    return render_template("Ru_Streetwear.html")
+    rubrands = RuBrands.query.all()
+    ruoutfits = RuOutfits.query.all()
+    return render_template("Ru_Streetwear.html",rubrands=rubrands, ruoutfits=ruoutfits)
 
-@app.route("/CISStars")
+@app.route("/CISStars", methods=['GET'])
 def CIS_Stars():
-    return render_template("CIS_Stars.html")
+    ciscelebrities = CISCelebrities.query.all()
+    cisoutfits = CISOutfits.query.all()
+    return render_template("CIS_Stars.html",ciscelebrities=ciscelebrities, cisoutfits=cisoutfits)
 
 @app.route("/Stars", methods=['GET'])
 def Stars():
     allstars = AllStars.query.all()
     return render_template("Stars.html", allstars=allstars)
 
-@app.route('/starsinfo')
+@app.route("/starsinfo", methods=['GET'])
 def Stars_info():
     allstars = AllStars.query.all()
     return render_template('starsinfo.html', allstars=allstars)
     
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']

@@ -1,13 +1,18 @@
 /* Основные стили */
-body {
-  font-family: 'Arial', sans-serif;
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #E9E7E7;
-  color: #292929;;
 }
 
-
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #E9E7E7;
+  color: #292929;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
 /* Шапка */
 header {
@@ -26,8 +31,6 @@ header a {
   text-decoration: none;
   text-align: center;
 }
-
-
 
 /* Навигация */
 .nav { 
@@ -68,7 +71,6 @@ header a {
   cursor: pointer;
 }
 
-
 /* Иконка меню */
 .menu-toggle {
   color: #fff;
@@ -85,7 +87,7 @@ header a {
   left: -250px;
   width: 250px;
   height: 100%;
-  background-color: #292929;;
+  background-color: #292929;
   z-index: 999;
   transition: left 0.3s ease;
   padding-top: 20px; 
@@ -98,7 +100,6 @@ header a {
 .sidebar-menu:hover {
   left: 0;
 }
-
 
 .sidebar-menu h2 {
   text-align: center;
@@ -132,9 +133,8 @@ header a {
   background-color: #575757;
 }
 
-
- /* Поисковая строка */
- .search-container {
+/* Поисковая строка */
+.search-container {
   display: flex;
   align-items: center; 
   margin-right: 20px;
@@ -160,8 +160,6 @@ header a {
   background-color: #f0f0f0;
 }
 
-
-
 /* Контейнер с карточками */
 .content {
   max-width: 1000px;
@@ -170,6 +168,7 @@ header a {
   flex-direction: column;
   gap: 20px;
   padding: 0 15px;
+  flex: 1; /* Важно для прижатия футера */
 }
 
 .card {
@@ -179,34 +178,34 @@ header a {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   display: flex;
   gap: 20px;
-  align-items: stretch; /* Убедитесь, что элементы растягиваются по высоте */
+  align-items: stretch;
   transition: transform 0.2s, box-shadow 0.2s;
-  height: 500px; /* Задаем фиксированную высоту для карточки */
+  height: 500px;
 }
 
 .celebrity {
-  flex: 0 0 150px; /* Фиксированная ширина для изображения */
-  position: relative; /* Установлено относительное позиционирование */
-  height: 100%; /* Занимает всю высоту карточки */
+  flex: 0 0 150px;
+  position: relative;
+  height: 100%;
 }
 
 .celebrity img {
-  width: 400px; /* Изображение занимает всю ширину */
-  height: auto; /* Изображение занимает всю высоту */
-  object-fit: cover; /* Сохранение пропорций изображения */
-  border-radius: 0; /* Убрано скругление для полного покрытия */
+  width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
 }
 
 .celebrity-name {
-  position: absolute; /* Абсолютное позиционирование */
-  top: 2px; /* Отступ сверху */
-  left: 10px; /* Отступ слева */
+  position: absolute;
+  top: 2px;
+  left: 10px;
   font-size: 1.6rem;
   font-weight: bold;
-  color: #333; 
-  background-color: rgba(255, 255, 255, 0.7); /* Полупрозрачный фон для улучшения читаемости */
-  padding: 5px; /* Отступ */
-  border-radius: 5px; /* Скругление углов */
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .outfits {
@@ -227,7 +226,7 @@ header a {
 .outfit-item img {
   width: 150px;
   height: 200px;
-  object-fit: cover
+  object-fit: cover;
 }
 
 .outfit-item p {
@@ -242,16 +241,14 @@ header a {
   font-size: 1.1rem;
 }
 
-
-
 /* Футер */
-footer {
+footer {  
   background-color: #292929;
   color: #fff;
   text-align: center;
   padding: 15px 0;
-  margin-top: auto;
   width: 100%;
+  margin-top: auto;
 }
 
 footer p {
