@@ -1,0 +1,258 @@
+/* Основные стили */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #E9E7E7;
+  color: #292929;;
+}
+
+
+
+/* Шапка */
+header {
+  background-color: #E9E7E7;
+  padding: 1px 0;
+  text-align: center;
+}
+
+header a {
+  font-size: 55px; 
+  margin: 0;
+  color: #161515; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  letter-spacing: 1px; 
+  font-family: 'Arial Black', sans-serif; 
+  text-decoration: none;
+  text-align: center;
+}
+
+
+
+/* Навигация */
+.nav { 
+  z-index: 1000;
+  width: 100%; 
+  background-color: #292929;
+  color: white;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+.text {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  align-items: center;
+}
+
+.text a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.text a:hover {
+  background-color: #575757;
+}
+
+.menu {
+  position: relative;
+  cursor: pointer;
+}
+
+
+/* Иконка меню */
+.menu-toggle {
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  margin-left: 7px;
+}
+
+/* Скрытое меню */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #292929;;
+  z-index: 999;
+  transition: left 0.3s ease;
+  padding-top: 20px; 
+}
+
+.menu-toggle:hover + .sidebar-menu {
+  left: 0; 
+}
+
+.sidebar-menu:hover {
+  left: 0;
+}
+
+
+.sidebar-menu h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+/* Элементы меню */
+.menu-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-items li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.menu-items li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.menu-items li a:hover {
+  background-color: #575757;
+}
+
+
+ /* Поисковая строка */
+ .search-container {
+  display: flex;
+  align-items: center; 
+  margin-right: 20px;
+}
+
+.search-input {
+  padding: 8px;
+  border: none;
+  border-radius: 4px; 
+  width: 150px; 
+}
+
+.search-button {
+  padding: 8px 8px; 
+  background-color: white; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  margin-right: 5px;
+}
+
+.search-button:hover {
+  background-color: #f0f0f0;
+}
+
+
+
+/* Контейнер с карточками */
+.content {
+  max-width: 1000px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 15px;
+}
+
+.card {
+  background-color:#f9f9f9;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  gap: 20px;
+  align-items: stretch; /* Убедитесь, что элементы растягиваются по высоте */
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 500px; /* Задаем фиксированную высоту для карточки */
+}
+
+.celebrity {
+  flex: 0 0 150px; /* Фиксированная ширина для изображения */
+  position: relative; /* Установлено относительное позиционирование */
+  height: 100%; /* Занимает всю высоту карточки */
+}
+
+.celebrity img {
+  width: 400px; /* Изображение занимает всю ширину */
+  height: auto; /* Изображение занимает всю высоту */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  border-radius: 0; /* Убрано скругление для полного покрытия */
+}
+
+.celebrity-name {
+  position: absolute; /* Абсолютное позиционирование */
+  top: 2px; /* Отступ сверху */
+  left: 10px; /* Отступ слева */
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333; 
+  background-color: rgba(255, 255, 255, 0.7); /* Полупрозрачный фон для улучшения читаемости */
+  padding: 5px; /* Отступ */
+  border-radius: 5px; /* Скругление углов */
+}
+
+.outfits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  flex: 1;
+}
+
+.outfit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.outfit-item img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover
+}
+
+.outfit-item p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.price {
+  font-weight: bold;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+
+
+/* Футер */
+footer {
+  background-color: #292929;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,73 @@
+{% extends  "base.html" %}
+
+{% block  title %}
+Профиль
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block  content %}
+
+<div class="tabs-container">
+  <input type="radio" name="tabs" id="tab-settings" checked>
+  <input type="radio" name="tabs" id="tab-favorites">
+  <input type="radio" name="tabs" id="tab-tracked">
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="user-card">
+        <img src="user-photo.jpg" alt="Фото пользователя" class="user-photo">
+        <h2 class="user-name">Имя Пользователя</h2>
+      </div>
+      <div class="tabs">
+        <label for="tab-settings" class="nav-btn">Настройки</label>
+        <label for="tab-favorites" class="nav-btn">Избранные посты</label>
+        <label for="tab-tracked" class="nav-btn">Отслеживаемые звезды</label>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="tab-content" id="content-settings">
+        <h2>Настройки</h2>
+        <p>Здесь вы можете изменить личные данные, пароль и другие настройки аккаунта.</p>
+      </div>
+
+      <div class="tab-content" id="content-favorites">
+        <h2>Избранные посты</h2>
+        <div class="post-list">
+          <div class="post-card">
+            <img src="post1.jpg" alt="Пост 1">
+            <h3>Заголовок поста 1</h3>
+            <p>Краткое описание поста...</p>
+            <a href="#" class="read-more">Читать далее</a>
+          </div>
+          <div class="post-card">
+            <img src="post2.jpg" alt="Пост 2">
+            <h3>Заголовок поста 2</h3>
+            <p>Краткое описание поста...</p>
+            <a href="#" class="read-more">Читать далее</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tab-content" id="content-tracked">
+        <h2>Отслеживаемые звезды</h2>
+        <div class="celebrity-list">
+          <div class="celebrity-card">
+            <img src="celebrity1.jpg" alt="Звезда 1" class="celebrity-image">
+            <div class="celebrity-name">Звезда 1</div>
+          </div>
+          <div class="celebrity-card">
+            <img src="celebrity2.jpg" alt="Звезда 2" class="celebrity-image">
+            <div class="celebrity-name">Звезда 2</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+{% endblock %}

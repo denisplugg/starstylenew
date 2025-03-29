@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+
+<main class="content">
+    <div class="card">
+        {% for celebrity in fcelebrities %}
+        <div class="celebrity">
+            <img src="{{ url_for('static', filename=celebrity.celebrity_img) }}" alt="{{ celebrity.celebrity_name }}">
+            <p class="celebrity-name">{{ celebrity.celebrity_name }}</p>
+        </div>
+        {% endfor %}
+        
+        {% for outfit in foutfits %}
+    <div class="outfits">
+        <div class="outfit-item">
+            <img src="{{ url_for('static', filename=outfit.item_img) }}" alt="{{ outfit.outfit_item }}">
+            <p>{{ outfit.outfit_item }}</p>
+            <p class="price">{{ outfit.price }} руб</p>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+</main>
+
+{% endblock %}

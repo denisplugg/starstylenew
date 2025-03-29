@@ -1,0 +1,25 @@
+{% extends  "base.html" %}
+
+{% block  title %}
+Знаменитости
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/stars.css') }}">
+{% endblock %}
+
+{% block  content %}
+
+<body>
+    <div class="container">
+        <div class="celebrity-list">
+            <a href="{{ url_for('Stars_info') }}" class="celebrity-card">
+                <img src="{{ url_for('static', filename='img/Stars/images/Central_Cee.jpg') }}" alt="Celebrity Name" class="celebrity-image">
+                <div class="star-name">Celebrity Name</div>
+            </a>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
+

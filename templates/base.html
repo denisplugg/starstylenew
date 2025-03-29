@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Style</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+  <header class="header">
+    <h1><a href="{{ url_for('index') }}">STAR STYLE</a></h1>
+  </header>
+
+  <nav class="nav">
+    <div class="menu-toggle">
+      ☰
+    </div>
+    
+    <div class="sidebar-menu">
+      <h2>Меню</h2>
+      <ul class="menu-items">
+        <li><a href="{{ url_for('index') }}">Главная</a></li>
+        <li><a href="{{ url_for('profile') }}">Личный кабинет</a></li>
+        <li><a href="{{ url_for('Stars') }}">Знаменитости</a></li>
+        <li><a href="{{ url_for('About') }}">О нас</a></li>
+        <li><a href="{{ url_for('Contacts') }}">Контакты</a></li>
+      </ul>
+    </div>
+    
+    <div class="text">
+      <a href="{{ url_for('Western_Stars') }}">Западные Звезды</a>
+      <a href="{{ url_for('Ru_Streetwear') }}">Русские Бренды</a>
+      <a href="{{ url_for('CIS_Stars') }}">СНГ Звезды</a>
+    </div>
+  
+    <div class="search-container">
+      <form method="GET" action="{{ url_for('index') }}">
+        <input type="text" name="query" class="search-input" placeholder="Поиск..." value="{{ request.args.get('query', '') }}">
+        <button type="submit" class="search-button">Искать</button>
+      </form>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+    <footer>
+        <p>&copy; 2025 Star Style</p>
+    </footer>
+</body>
+</html>
+

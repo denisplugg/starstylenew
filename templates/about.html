@@ -1,0 +1,43 @@
+{% extends  "base.html" %}
+
+{% block  title %}
+Знаменитости
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block  content %}
+
+<header class="header1">
+    <h1>О нас</h1>
+    <p>Наш сайт предоставляет пользователям возможность найти одежду, аксессуары или обувь, которые были замечены на знаменитостях.Идея основывается на популярной потребности пользователей повторять модные тренды, задаваемые звездами кино, музыки, спорта и социальных сетей.</p>
+</header>
+
+<div class="about">
+    <div class="about-content">
+        <h2>Кто мы?</h2>
+        <p>Мы являемся разработчиками данного веб-сайта, наша команда - начинающие разработчики, которые постепенно прогрессируют в своих знаниях</p>
+    </div>
+</div>
+
+<div class="team">
+    <h2>Наша команда</h2>
+    <div class="team-container">
+        <div class="team-member">
+            <h3>Денис А</h3>
+            <p></p>
+        </div>
+        <div class="team-member">
+            <h3>Владислав</h3>
+            <p></p>
+        </div>
+        <div class="team-member">
+            <h3>Денис Г</h3>
+            <p></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

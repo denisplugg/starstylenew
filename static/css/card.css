@@ -1,0 +1,169 @@
+/* Основные стили */
+.card-container {
+  width: 1300px; /* Увеличена ширина */
+  margin: 30px auto;
+  font-family: Arial, sans-serif;
+}
+
+.fashion-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  min-height: 600px; /* Увеличена высота */
+  border: 1px solid #ddd;
+}
+
+.card-content {
+  display: flex;
+  flex-grow: 1;
+}
+
+/* Секция фото знаменитости */
+.celebrity-photo-section {
+  width: 50%; /* Увеличена ширина */
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 500px; /* Увеличена высота */
+  background-color: #e0e0e0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Секция с вещами */
+.items-section {
+  width: 50%; /* Увеличена ширина */
+  padding: 40px; /* Увеличены отступы */
+  box-sizing: border-box;
+}
+
+.items-row {
+  display: flex;
+  gap: 30px; /* Увеличен промежуток */
+  height: 100%;
+}
+
+.fashion-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-photo {
+  height: 250px; /* Увеличена высота фото */
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+
+.item-info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.brand {
+  font-size: 18px; /* Увеличен шрифт */
+  font-weight: bold;
+  color: #333;
+}
+
+.item-name {
+  font-size: 16px; /* Увеличен шрифт */
+  color: #666;
+}
+
+.prices {
+  display: flex;
+  gap: 15px; /* Увеличен промежуток */
+  margin-top: 10px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #666;
+  font-size: 16px; /* Увеличен шрифт */
+}
+
+.current-price {
+  color: ч;
+  font-weight: bold;
+  font-size: 17px; /* Увеличен шрифт */
+}
+
+/* Подвал */
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #f9f9f9;
+  border-top: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 20px; /* Увеличен шрифт */
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 20px; /* Увеличен размер */
+  cursor: pointer;
+}
+
+.like-btn.active i {
+  color: #e53935;
+}
+
+.total-price {
+  font-size: 18px; /* Увеличен шрифт */
+}
+
+.amount {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Адаптивность */
+@media (max-width: 1340px) {
+  .card-container {
+    width: 95%;
+  }
+  
+  .card-content {
+    flex-direction: column;
+  }
+  
+  .celebrity-photo-section,
+  .items-section {
+    width: 100%;
+  }
+  
+  .items-row {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .item-photo {
+    height: 200px;
+  }
+  
+  .photo-placeholder {
+    min-height: 400px;
+  }
+}
