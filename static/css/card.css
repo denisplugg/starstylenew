@@ -1,28 +1,46 @@
-
 /* Контейнер карточек */
 .card-container {
-  width: 1200px;
+  max-width: 1200px;
   margin: 30px auto;
+  padding: 0 15px;
 }
 
+/* Карточка */
 .fashion-card {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: #fff;
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  min-height: 40 0px;
+  min-height: 400px;
   border: 1px solid #ddd;
+  opacity: 0;
+  transform: translateY(40px) scale(0.8);
+  animation: fadeIn 1.2s ease-in forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .card-content {
   display: flex;
   flex-grow: 1;
   height: 600px;
+  overflow: hidden;
 }
 
-/* Секция фото знаменитости */
+/* Фото-блок */
 .celebrity-photo-section {
   width: 50%;
   background: #f5f5f5;
@@ -40,6 +58,7 @@
   background-position: center;
 }
 
+/* Вещи */
 /* Секция с вещами */
 .items-section {
   width: 70%;
@@ -47,30 +66,45 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  background-color: #fafafa;
+  border-left: 1px solid #eee;
 }
 
+/* Ряд предметов */
 .items-row {
   display: flex;
   gap: 30px;
-  margin-top: auto; /* Прижимаем к низу */
-  padding-bottom: 20px; /* Отступ от футера */
+  margin-top: auto;
+  padding-bottom: 20px;
 }
 
+/* Один элемент */
 .fashion-item {
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
+.fashion-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Фото предмета */
 .item-photo {
-  height: 150px;
-  width: 150px;
+  width: 120px;
+  height: 120px;
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
+/* Информация о предмете */
 .item-info {
   display: flex;
   flex-direction: column;
@@ -79,28 +113,30 @@
 
 .brand {
   font-size: 18px;
-  font-weight: bold;
-  color: #333;
+  font-weight: 700;
+  color: #222;
 }
 
 .item-name {
   font-size: 16px;
-  color: #666;
+  color: #777;
 }
 
+/* Цены */
 .prices {
   display: flex;
   gap: 15px;
   margin-top: 5px;
+  justify-content: center;
 }
 
 .current-price {
   color: #e53935;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 17px;
 }
 
-/* Подвал карточки */
+/* Подвал */
 .footer {
   width: 100%;
   display: flex;
@@ -115,7 +151,7 @@
 }
 
 .name {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 20px;
 }
 
@@ -125,6 +161,7 @@
   color: #ccc;
   font-size: 20px;
   cursor: pointer;
+  transition: color 0.3s;
 }
 
 .like-btn.active i {
@@ -136,49 +173,6 @@
 }
 
 .amount {
-  font-weight: bold;
-  color: #333;
-}
-
-/* Адаптивность */
-@media (max-width: 1340px) {
-  .card-container {
-    width: 95%;
-  }
-  
-  .card-content {
-    flex-direction: column;
-    height: auto;
-  }
-  
-  .celebrity-photo-section,
-  .items-section {
-    width: 100%;
-  }
-  
-  .celebrity-photo-section {
-    height: 400px;
-  }
-  
-  .photo-placeholder {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .items-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    margin-top: 30px;
-    padding-bottom: 0;
-  }
-  
-  .fashion-item {
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .item-photo {
-    height: 300px;
-  }
+  font-weight: 700;
+  color: #e53935;
 }

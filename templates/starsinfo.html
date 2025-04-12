@@ -11,19 +11,14 @@
 {% block  content %}
 
 <body>
-
-    <div class="containerinfo">
-        <div class="headerinfo">
-            <h1>Ирина Шейк</h1>
+    <div class="container">
+        <h1 class="text-center">{{ celebrity.name }}</h1>
+        <div class="celebrity-details">
+            <img src="{{ celebrity.image_url }}" alt="{{ celebrity.name }}" class="img-fluid mb-3">
+            <p>{{ celebrity.description }}</p>
         </div>
-
-        <div class="celebrity-info">
-            <img src="https://example.com/photo.jpg" alt="Ирина Шейк">
-            <div>
-                <h2>О знаменитости</h2>
-                <p>Ирина Шейк — российская супермодель и актриса. Она известна своими работами с крупнейшими модными брендами, такими как Victoria's Secret, Gucci и других. Ирина активно участвует в благотворительных акциях и является одним из самых известных лиц в мире моды.</p>
-            </div>
-        </div>
+        <a href="{{ url_for('Stars') }}" class="btn btn-primary">Назад к знаменитостям</a>
+    </div>
 </body>
 
 {% endblock %}

@@ -20,9 +20,9 @@
           
           <div class="items-section">
               <div class="items-row">
-                  {% for outfit in foutfits %}
+                  {% for outfit in celebrity.outfits %}
                   <div class="fashion-item">
-                      <div class="item-photo" style="background-image: url('{{ outfit.item_img }}')"></div>
+                      <div class="item-photo" style="background-image: url('/static/{{ outfit.item_img }}')"></div>
                       <div class="item-info">
                           <h3 class="brand">{{ outfit.outfit_item.split()[0] }}</h3>
                           <p class="item-name">{{ ' '.join(outfit.outfit_item.split()[1:]) }}</p>
@@ -42,12 +42,12 @@
               <i class="far fa-heart"></i>
           </button>
           <div class="total-price">
-              <span>Total:</span>
+              <span>Итого:</span>
               <span class="amount">{{ celebrity.outfits|sum(attribute='price') }}р</span>
           </div>
       </div>
     </div>
 </div>
-  {% endfor %}
+{% endfor %}
 
 {% endblock %}

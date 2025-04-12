@@ -2,6 +2,9 @@ from database import db
 
 
 class ForeignCelebrities(db.Model):
+    __tablename__ = 'foreign_celebrities'
+    __searchable__ = ['celebrity_name']
+
     id = db.Column(db.Integer, primary_key=True)
     celebrity_name = db.Column(db.String(100), nullable=False)
     celebrity_img = db.Column(db.String(200), nullable=False)
@@ -24,9 +27,13 @@ class ForeignOutfits(db.Model):
 
 
 class CISCelebrities(db.Model):
+    __tablename__ = 'cis_celebrities'
+    __searchable__ = ['celebrity_name']
+
     id = db.Column(db.Integer, primary_key=True)
     celebrity_name = db.Column(db.String(100), nullable=False)
     celebrity_img = db.Column(db.String(200), nullable=False)
+    unique_id = db.Column(db.String(100), nullable=False, unique=True)
     outfits = db.relationship('CISOutfits', backref='celebrities', lazy=True)
 
     def __repr__(self):
@@ -45,9 +52,13 @@ class CISOutfits(db.Model):
 
 
 class RuBrands(db.Model):
+    __tablename__ = 'ru_brands'
+    __searchable__ = ['brand_name']
+
     id = db.Column(db.Integer, primary_key=True)
     brand_name = db.Column(db.String(100), nullable=False)
     brand_img = db.Column(db.String(200), nullable=False)
+    unique_id = db.Column(db.String(100), nullable=False, unique=True)
     outfits = db.relationship('RuOutfits', backref='brands', lazy=True)
 
     def __repr__(self):

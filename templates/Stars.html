@@ -11,14 +11,15 @@
 {% block  content %}
 
 <body>
+
     <div class="container">
-        <div class="celebrity-list">
-            <a href="{{ url_for('Stars_info') }}" class="celebrity-card">
-                <img src="{{ url_for('static', filename='img/Stars/images/Central_Cee.jpg') }}" alt="Celebrity Name" class="celebrity-image">
-                <div class="star-name">Celebrity Name</div>
-            </a>
+        <h1>Знаменитости</h1>
+        <div class="select-buttons">
+            <a href="{{ url_for('Forstars') }}"><button>Зарубежные Знаменитости</button></a>
+            <a href="{{ url_for('Rustars') }}"><button>Русские Знаменитости</button></a>
         </div>
     </div>
+
 </body>
 
 {% endblock %}

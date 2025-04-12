@@ -1,31 +1,43 @@
 
-h1 {
-    margin: 0;
+section {
+    background-color: #E9E7E7;
+    border-radius: 12px;
+    width: auto;
+    padding: 30px;
 }
 
-section {
-    padding: 40px 20px;
-    max-width: auto;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+h2 {
+    margin-top: 0;
+    font-size: 26px;
+    color: #2c3e50;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
 .contact-info {
     margin-bottom: 20px;
+    padding: 15px;
+    border-left: 4px solid #3498db;
+    background-color: #ecf5fb;
+    border-radius: 6px;
 }
 
 .contact-info strong {
     display: block;
     margin-bottom: 5px;
+    font-weight: 700;
+    color: #2980b9;
 }
 
-.contact-info p {
-    margin: 5px 0;
-}   
-
 a {
-    color: #4CAF50;
+    color: #2980b9;
     text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
 }

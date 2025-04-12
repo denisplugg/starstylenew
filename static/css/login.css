@@ -99,6 +99,7 @@ button:hover {
 .additional-options a {
     color: #292929;
     text-decoration: none;
+    font-weight: 700;
 }
 
 .additional-options a:hover {

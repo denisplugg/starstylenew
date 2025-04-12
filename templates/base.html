@@ -32,20 +32,41 @@
     
     <div class="text">
       <a href="{{ url_for('Western_Stars') }}">Западные Звезды</a>
-      <a href="{{ url_for('Western_Stars') }}">Русские Бренды</a>
-      <a href="{{ url_for('Western_Stars') }}">СНГ Звезды</a>
+      <a href="{{ url_for('Ru_Streetwear') }}">Русские Бренды</a>
+      <a href="{{ url_for('CIS_Stars') }}">СНГ Звезды</a>
     </div>
   
     <div class="search-container">
-      <form method="GET" action="{{ url_for('index') }}">
-        <input type="text" name="query" class="search-input" placeholder="Поиск..." value="{{ request.args.get('query', '') }}">
-        <button type="submit" class="search-button">Искать</button>
-      </form>
+      <div class="search-container">
+        <form method="GET" action="{{ url_for('index') }}">
+            <input type="text" name="query" class="search-input" placeholder="Поиск..." value="{{ query }}">
+            <button type="submit" class="search-button">Искать</button>
+        </form>
     </div>
   </nav>
 
   <main class="main-content">
-    {% block content %}{% endblock %}
+    
+    {% block content %}<h2>Зарубежные Знаменитости</h2>
+    <ul>
+        {% for celebrity in fcelebrities %}
+            <li>{{ celebrity.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>СНГ Знаменитости</h2>
+    <ul>
+        {% for celebrity in ciscelebrities %}
+            <li>{{ celebrity.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Русские Бренды</h2>
+    <ul>
+        {% for brand in rubrands %}
+            <li>{{ brand.name }}</li>
+        {% endfor %}
+    </ul>{% endblock %}
   </main>
 
     <footer>

@@ -26,8 +26,8 @@ def add_foreign_outfit(outfit_item, price, item_img, celebrity_id):
         db.session.rollback()  
         print(f'Error adding foreign outfit: {str(e)}') 
 
-def add_cis_celebrity(celebrity_name, celebrity_img):
-    new_cis_celebrity = CISCelebrities(celebrity_name=celebrity_name, celebrity_img=celebrity_img)
+def add_cis_celebrity(celebrity_name, celebrity_img, unique_id):
+    new_cis_celebrity = CISCelebrities(celebrity_name=celebrity_name, celebrity_img=celebrity_img, unique_id=unique_id)
 
     try:
         db.session.add(new_cis_celebrity)
@@ -50,8 +50,8 @@ def add_cis_outfit(outfit_item, price, item_img, celebrity_id):
         print(f'Error adding cis outfit: {str(e)}')
 
 
-def add_ru_brand(brand_name, brand_logo):
-    new_ru_brand = RuBrands(brand_name=brand_name, brand_logo=brand_logo)
+def add_ru_brand(brand_name, brand_logo, unique_id):
+    new_ru_brand = RuBrands(brand_name=brand_name, brand_logo=brand_logo, unique_id=unique_id)
 
     try:
         db.session.add(new_ru_brand)
@@ -72,8 +72,8 @@ def add_ru_outfit(outfit_item, price, item_img, brand_id):
         db.session.rollback()
         print(f'Error adding ru outfit: {str(e)}')
 
-def add_star(name, description, image_url):
-    new_star = AllStars(name=name, description=description, image_url=image_url)
+def add_star(name, description, image_url, nation):
+    new_star = AllStars(name=name, description=description, image_url=image_url, nation=nation)
 
     try:
         db.session.add(new_star)
@@ -86,4 +86,5 @@ def add_star(name, description, image_url):
 
 if __name__ == '__main__':
     with app.app_context():
-        add_foreign_outfit('RRR-123 Layered Double Pants',149990,'/static/img/Western_Stars/KeyGlock1/trousers.jpg',3)
+        add_foreign_outfit()
+        
