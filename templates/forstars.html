@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Зарубежные знаменитости
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/allstars.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center">Зарубежные Знаменитости</h1>
+    
+    {% for celebrity in foreign_celebrities %}
+    <div class="celebrity-card">
+        <div class="photo-section">
+            <div class="photo-placeholder" 
+                 style="background-image: url('{{ url_for('static', filename=celebrity.image_url) }}')">
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h2 class="celebrity-name">{{ celebrity.name }}</h2>
+            <div class="celebrity-description">
+                <p>{{ celebrity.description }}</p>
+            </div>
+            
+            <div class="card-footer">
+                <button class="like-btn" onclick="toggleLike(this)">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p class="text-center">Знаменитости не найдены</p>
+    {% endfor %}
+</div>
+
+<script>
+  function toggleLike(button) {
+    const icon = button.querySelector('i');
+    button.classList.toggle('liked');
+    icon.classList.toggle('far');
+    icon.classList.toggle('fas');
+  }
+</script>
+
+{% endblock %}

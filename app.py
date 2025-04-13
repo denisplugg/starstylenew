@@ -26,8 +26,6 @@ with app.app_context():
 @app.route("/", methods=['GET'])
 def index():
     query = request.args.get('query', '')
-
-    # Поиск с использованием Flask-Msearch
     if query:
         fcelebrities = ForeignCelebrities.query.msearch(query, fields=['celebrity_name']).all()
         ciscelebrities = CISCelebrities.query.msearch(query, fields=['celebrity_name']).all()
@@ -136,13 +134,19 @@ def About():
 def Contacts():
     return render_template("contacts.html")
 
-@app.route("/forstars")
+@app.route("/forstars", methods=['GET'])
 def Forstars():
-    return render_template("forstars.html")
+    foreign_celebrities = AllStars.query.filter_by(nation=0).all()
+    return render_template("forstars.html", foreign_celebrities=foreign_celebrities)
 
-@app.route("/rustars")
+@app.route("/rustars", methods=['GET'])
 def Rustars():
-    return render_template("rustars.html")
+    russian_celebrities = AllStars.query.filter_by(nation=1).all()
+    return render_template("rustars.html", russian_celebrities=russian_celebrities)
+
+@app.route("/starsinfo")
+def Starsinfo():
+    return render_template("starsinfo.html")
 
 
 if __name__ == '__main__':

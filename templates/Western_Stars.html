@@ -6,6 +6,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 {% endblock %}
 
 {% block content %}
@@ -15,13 +16,13 @@
   <div class="fashion-card">
       <div class="card-content">
           <div class="celebrity-photo-section">
-              <div class="photo-placeholder" style="background-image: url('/static/{{ celebrity.celebrity_img }}')"></div>
+              <div class="photo-placeholder" style="background-image: url('{{ url_for('static', filename=celebrity.celebrity_img) }}')"></div>
           </div>
-          
+
           <div class="items-section">
               <div class="items-row">
                   {% for outfit in celebrity.outfits %}
-                  <div class="fashion-item">
+                  <div class="fashion-item" onclick="window.open('https://www.youtube.com/watch?v=xvFZjo5PgG0', '_blank')">
                       <div class="item-photo" style="background-image: url('/static/{{ outfit.item_img }}')"></div>
                       <div class="item-info">
                           <h3 class="brand">{{ outfit.outfit_item.split()[0] }}</h3>
@@ -35,10 +36,10 @@
               </div>
           </div>
       </div>
-      
+
       <div class="footer">
           <span class="name">{{ celebrity.celebrity_name }}</span>
-          <button class="like-btn" onclick="this.classList.toggle('active')">
+          <button class="like-btn" onclick="toggleLike(this)">
               <i class="far fa-heart"></i>
           </button>
           <div class="total-price">
@@ -49,5 +50,14 @@
     </div>
 </div>
 {% endfor %}
+
+<script>
+  function toggleLike(button) {
+    const icon = button.querySelector('i');
+    button.classList.toggle('liked');
+    icon.classList.toggle('far');
+    icon.classList.toggle('fas');
+  }
+</script>
 
 {% endblock %}
