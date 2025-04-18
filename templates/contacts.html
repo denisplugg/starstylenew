@@ -12,25 +12,53 @@
 
 <body>
 
-    <section>
-      <h2>Мы всегда рады вашим вопросам!</h2>
-      <p>Если у вас есть вопросы или предложения, свяжитесь с нами через один из способов ниже.</p>
-      
-      <div class="contact-info">
-        <strong>Телефон:</strong>
-        <p>+7 (495) 123-45-67</p>
-      </div>
-      
-      <div class="contact-info">
-        <strong>Электронная почта:</strong>
-        <p><a href="mailto:info@example.com">info@example.com</a></p>
-      </div>
-      
-      <div class="contact-info">
-        <strong>Часы работы:</strong>
-        <p>Понедельник - Пятница: с 10:00 до 20:00</p>
-      </div>
-    </section>
+  <section class="contact-section">
+    <div class="contact-container">
+        <h2 class="contact-title">Мы всегда рады вашим вопросам!</h2>
+        <p class="contact-subtitle">Если у вас есть вопросы или предложения, свяжитесь с нами через один из способов ниже.</p>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </div>
+                <div class="contact-details">
+                    <h3 class="contact-label">Телефон</h3>
+                    <a href="tel:+79690837818" class="contact-value">+7 (969) 083-78-18</a>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </div>
+                <div class="contact-details">
+                    <h3 class="contact-label">Электронная почта</h3>
+                    <a href="mailto:d7815644@gmail.com" class="contact-value">d7815644@gmail.com</a>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <div class="contact-details">
+                    <h3 class="contact-label">Часы работы</h3>
+                    <p class="contact-value">Пн-Пт: 10:00 - 20:00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     
 </body>
+
 {% endblock %}

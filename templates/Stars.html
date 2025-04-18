@@ -12,13 +12,19 @@
 
 <body>
 
+  <div class="celebrities-header">
     <div class="container">
-        <h1>Знаменитости</h1>
-        <div class="select-buttons">
-            <a href="{{ url_for('Forstars') }}"><button>Зарубежные Знаменитости</button></a>
-            <a href="{{ url_for('Rustars') }}"><button>Русские Знаменитости</button></a>
+        <h1 class="celebrities-title">Знаменитости</h1>
+        <div class="category-buttons">
+            <a href="{{ url_for('Forstars') }}" class="category-btn foreign-btn">
+                <span>Зарубежные Знаменитости</span>
+            </a>
+            <a href="{{ url_for('Rustars') }}" class="category-btn russian-btn">
+                <span>Русские Знаменитости</span>
+            </a>
         </div>
     </div>
+</div>
 
 </body>
 

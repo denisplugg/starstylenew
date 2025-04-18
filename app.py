@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, flash, session
+from flask import Flask, render_template, request, redirect, flash, session, Blueprint
+import random
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_msearch import Search
@@ -18,8 +19,11 @@ db.init_app(app)
 migrate = Migrate(app, db)
 search = Search(app, db)
 
+
 with app.app_context():
     db.create_all()
+
+user_settings_bp = Blueprint('user_settings', __name__)
 
 
 @app.route("/base")
@@ -35,20 +39,21 @@ def index():
         ciscelebrities = CISCelebrities.query.all()
         rubrands = RuBrands.query.all()
 
-    foutfits = ForeignOutfits.query.all()
-    cisoutfits = CISOutfits.query.all()
-    ruoutfits = RuOutfits.query.all()
+    combined_celebrities = []
 
-    return render_template(
-        "index.html",
-        fcelebrities=fcelebrities,
-        foutfits=foutfits,
-        ciscelebrities=ciscelebrities,
-        cisoutfits=cisoutfits,
-        rubrands=rubrands,
-        ruoutfits=ruoutfits,
-        query=query 
-    )
+    for celebrity in fcelebrities:
+        combined_celebrities.append(celebrity)
+
+    for celebrity in ciscelebrities:
+        combined_celebrities.append(celebrity)
+
+    for brand in rubrands:
+        combined_celebrities.append(brand)
+
+    random.shuffle(combined_celebrities)
+
+    return render_template('index.html', celebrities=combined_celebrities, query=query)
+
 
 @app.route("/WesternStars", methods=['GET'])
 def Western_Stars():
@@ -125,6 +130,41 @@ def profile():
         user = Users.query.get(session['user_id'])
         return render_template('profile.html', user=user)
     return redirect('/login')
+
+@user_settings_bp.route('/profile', methods=['GET', 'POST'])
+def settings():
+    if request.method == 'POST':
+        new_username = request.form.get('new-username')
+        new_password = request.form.get('new-password')
+
+
+        user_id = session.get('user_id')
+        if not user_id:
+            flash('Необходимо войти в систему.', 'error')
+            return redirect('/login')
+
+        user = Users.query.get(user_id)
+        if not user:
+            flash('Пользователь не найден.', 'error')
+            return render_template('profile.html')
+
+        user.username = new_username
+
+        hashed_password = generate_password_hash(new_password)
+        user.password = hashed_password
+
+        try:
+            db.session.commit()
+            flash('Настройки успешно обновлены.', 'success')
+            return redirect('/profile')
+        except Exception as e:
+            db.session.rollback()
+            flash(f'Ошибка при обновлении настроек: {str(e)}', 'error')
+            return render_template('profile.html',username=user.username, favorites=user.favorites)
+        
+    return render_template('profile.html')
+
+app.register_blueprint(user_settings_bp)
 
 @app.route("/about")
 def About():

@@ -6,6 +6,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 {% endblock %}
 
 {% block content %}
@@ -15,17 +16,16 @@
   <div class="fashion-card">
       <div class="card-content">
           <div class="celebrity-photo-section">
-              <div class="photo-placeholder" style="background-image: url('/static/{{ celebrity.celebrity_img }}')"></div>
+            <div class="photo-placeholder" style="background-image: url('/static/{{ brand.brand_img | trim }}')"></div>
           </div>
           
           <div class="items-section">
               <div class="items-row">
                   {% for outfit in brand.outfits %}
-                  <div class="fashion-item">
-                      <div class="item-photo" style="background-image: url('{{ outfit.item_img }}')"></div>
+                  <div class="fashion-item" onclick="window.open('{{ outfit.link }}', '_blank')">
+                      <div class="item-photo" style="background-image: url('/static/{{ outfit.item_img }}')"></div>
                       <div class="item-info">
-                          <h3 class="brand">{{ outfit.outfit_item.split()[0] }}</h3>
-                          <p class="item-name">{{ ' '.join(outfit.outfit_item.split()[1:]) }}</p>
+                          <h3 class="brand">{{ outfit.outfit_item }}</h3>
                           <div class="prices">
                               <span class="current-price">{{ outfit.price }}р</span>
                           </div>
@@ -37,17 +37,15 @@
       </div>
       
       <div class="footer">
-          <span class="name">{{ brand.brand_name }}</span>
-          <button class="like-btn" onclick="this.classList.toggle('active')">
-              <i class="far fa-heart"></i>
-          </button>
-          <div class="total-price">
-              <span>Итого:</span>
-              <span class="amount">{{ brand.outfits|sum(attribute='price') }}р</span>
-          </div>
+        <span class="name">{{ brand.brand_name }}</span>
+        <div class="total-price">
+            <span>Итого:</span>
+            <span class="amount">{{ brand.outfits|sum(attribute='price') }}р</span>
+        </div>
       </div>
     </div>
 </div>
+
 {% endfor %}
 
 {% endblock %}  

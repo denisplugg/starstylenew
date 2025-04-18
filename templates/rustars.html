@@ -16,10 +16,8 @@
     
     {% for celebrity in russian_celebrities %}
     <div class="celebrity-card">
-        <div class="photo-section">
-            <div class="photo-placeholder" 
-                 style="background-image: url('{{ url_for('static', filename=celebrity.image_url) }}')">
-            </div>
+        <div class="photo-section"> 
+            <div class="photo-placeholder" style="background-image: url('/static/{{ celebrity.image_url | trim }}')"></div>
         </div>
         
         <div class="info-section">
@@ -29,24 +27,10 @@
             </div>
             
             <div class="card-footer">
-                <button class="like-btn" onclick="toggleLike(this)">
-                    <i class="far fa-heart"></i>
-                </button>
             </div>
         </div>
     </div>
-    {% else %}
-    <p class="text-center">Знаменитости не найдены</p>
     {% endfor %}
 </div>
-
-<script>
-  function toggleLike(button) {
-    const icon = button.querySelector('i');
-    button.classList.toggle('liked');
-    icon.classList.toggle('far');
-    icon.classList.toggle('fas');
-  }
-</script>
 
 {% endblock %}

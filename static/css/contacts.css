@@ -1,43 +1,89 @@
-
-section {
-    background-color: #E9E7E7;
-    border-radius: 12px;
-    width: auto;
-    padding: 30px;
+.contact-section {
+    padding: 4rem 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h2 {
-    margin-top: 0;
-    font-size: 26px;
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contact-title {
+    text-align: center;
+    font-size: 2.2rem;
     color: #2c3e50;
-}
-
-p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.contact-info {
-    margin-bottom: 20px;
-    padding: 15px;
-    border-left: 4px solid #3498db;
-    background-color: #ecf5fb;
-    border-radius: 6px;
-}
-
-.contact-info strong {
-    display: block;
-    margin-bottom: 5px;
+    margin-bottom: 1rem;
     font-weight: 700;
-    color: #2980b9;
 }
 
-a {
-    color: #2980b9;
+.contact-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #6c757d;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.contact-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    background: #4e73df;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+}
+
+.contact-details {
+    flex: 1;
+}
+
+.contact-label {
+    font-size: 1rem;
+    color: #6c757d;
+    font-weight: 600;
+}
+
+.contact-value {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-weight: 600;
     text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
 }
 
-.contact-info a:hover {
-    text-decoration: underline;
+a.contact-value:hover {
+    color: #4e73df;
 }

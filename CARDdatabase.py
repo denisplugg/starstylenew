@@ -21,6 +21,7 @@ class ForeignOutfits(db.Model):
     price = db.Column(db.Float, nullable=False)
     item_img = db.Column(db.String(200), nullable=False)
     celebrity_id = db.Column(db.Integer, db.ForeignKey('foreign_celebrities.id'), nullable=False)
+    link = db.Column(db.String(200), nullable=False)
 
     def __repr__(self):
         return f'<ForeignOutfits {self.outfit_item}>'
@@ -46,6 +47,7 @@ class CISOutfits(db.Model):
     price = db.Column(db.Float, nullable=False)
     item_img = db.Column(db.String(200), nullable=False)
     celebrity_id = db.Column(db.Integer, db.ForeignKey('cis_celebrities.id'), nullable=False)
+    link = db.Column(db.String(200))
 
     def __repr__(self):
         return f'<CISOutfits {self.outfit_item}>'
@@ -71,6 +73,12 @@ class RuOutfits(db.Model):
     price = db.Column(db.Float, nullable=False)
     item_img = db.Column(db.String(200), nullable=False)
     brand_id = db.Column(db.Integer, db.ForeignKey('ru_brands.id'), nullable=False)
+    link = db.Column(db.String(200))
 
     def __repr__(self):
         return f'<RuOutfits {self.outfit_item}>'
+    
+favorites = db.Table('favorites',
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('celebrity_id', db.Integer, db.ForeignKey('foreign_celebrities.id'), primary_key=True)
+    )

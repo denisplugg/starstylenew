@@ -1,13 +1,51 @@
 {% extends "base.html" %}
 
-{% block title %}Знаменитости | Star Style{% endblock %}
+{% block title %}
+СНГ знаменитости
+{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 {% endblock %}
 
 {% block content %}
 
+{% for celebrity in ciscelebrities %}
+<div class="card-container">
+  <div class="fashion-card">
+      <div class="card-content">
+          <div class="celebrity-photo-section">
+            <div class="photo-placeholder" style="background-image: url('/static/{{ celebrity.celebrity_img | trim }}')"></div>
+          </div>
 
+          <div class="items-section">
+              <div class="items-row">
+                  {% for outfit in celebrity.outfits %}
+                  <div class="fashion-item" onclick="window.open('{{ outfit.link }}', '_blank')">
+                      <div class="item-photo" style="background-image: url('/static/{{ outfit.item_img }}')"></div>
+                      <div class="item-info">
+                          <h3 class="brand">{{ outfit.outfit_item }}</h3>
+                          <div class="prices">
+                              <span class="current-price">{{ outfit.price }}р</span>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+
+      <div class="footer">
+        <span class="name">{{ celebrity.celebrity_name }}</span>
+        <div class="total-price">
+            <span>Итого:</span>
+            <span class="amount">{{ celebrity.outfits|sum(attribute='price') }}р</span>
+        </div>
+      </div>
+    </div>
+</div>
+                 
+{% endfor %}
 
 {% endblock %}  
